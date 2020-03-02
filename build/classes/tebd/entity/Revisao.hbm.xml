@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/03/2020 10:02:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tebd.entity.Revisao" table="revisao" catalog="tebd" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="artigo" class="tebd.entity.Artigo" fetch="select">
+            <column name="artigo_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="autor" class="tebd.entity.Autor" fetch="select">
+            <column name="autor_id" not-null="true" />
+        </many-to-one>
+        <property name="nota" type="int">
+            <column name="nota" not-null="true" />
+        </property>
+        <property name="comentario" type="string">
+            <column name="comentario" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" not-null="true" />
+        </property>
+        <property name="deletedAt" type="timestamp">
+            <column name="deleted_at" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

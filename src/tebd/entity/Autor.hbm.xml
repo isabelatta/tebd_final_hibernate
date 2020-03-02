@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02/03/2020 10:02:01 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tebd.entity.Autor" table="autor" catalog="tebd" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" not-null="true" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+        <property name="tel" type="string">
+            <column name="tel" not-null="true" />
+        </property>
+        <property name="localEmprego" type="string">
+            <column name="local_emprego" not-null="true" />
+        </property>
+        <property name="numeroInscricao" type="string">
+            <column name="numero_inscricao" not-null="true" />
+        </property>
+        <property name="dataVencimento" type="timestamp">
+            <column name="data_vencimento" length="19" not-null="true" />
+        </property>
+        <property name="cartaoCredito" type="string">
+            <column name="cartao_credito" not-null="true" />
+        </property>
+        <property name="voluntario" type="boolean">
+            <column name="voluntario" not-null="true" />
+        </property>
+        <property name="createdAt" type="timestamp">
+            <column name="created_at" length="19" not-null="true" />
+        </property>
+        <property name="updatedAt" type="timestamp">
+            <column name="updated_at" length="19" not-null="true" />
+        </property>
+        <property name="deletedAt" type="timestamp">
+            <column name="deleted_at" length="19" />
+        </property>
+        <set name="autorArtigos" table="autor_artigo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="autor_id" not-null="true" />
+            </key>
+            <one-to-many class="tebd.entity.AutorArtigo" />
+        </set>
+        <set name="revisaos" table="revisao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="autor_id" not-null="true" />
+            </key>
+            <one-to-many class="tebd.entity.Revisao" />
+        </set>
+    </class>
+</hibernate-mapping>
